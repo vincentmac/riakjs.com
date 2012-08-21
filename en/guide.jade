@@ -1,0 +1,15 @@
+section
+  h2#guide Guide
+  
+  +js.
+    db.get('flights', 'KLM-5034', function(err, flight, meta) {
+      if (err) throw err
+      flight.status = 'delayed'
+      meta.links.push({ bucket: 'airlines', key: 'IBE', tag: 'operated_by' })
+      db.save('flights', 'KLM-5034', flight, meta)
+    })
+
+  include ./guide-meta
+  include ./guide-uri-encoded
+  include ./guide-http-headers
+  include ./guide-content-detection

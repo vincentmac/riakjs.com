@@ -1,0 +1,11 @@
+section
+  h4#guide-content-detection Content detection
+  
+  p.
+    If you don't provide a content type while sending a request body, riak-js 
+    will do its best to guess one:
+    
+  ul
+    li If your data is a <code>Buffer</code> it will assume <code>application/octet-stream</code>
+    li If your data is a Javascript object whose <code>typeof</code> yields <code>object</code>, it will assume <code>application/json</code>
+    li Otherwise, <code>text/plain</code>

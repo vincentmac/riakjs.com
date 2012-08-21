@@ -1,0 +1,8 @@
+section
+  h4#api-save Save
+
+  +js.
+    db.save('airlines', 'ARG', { name: 'Aerolíneas Argentinas', fleet: 40, european: false })
+
+  +js.
+    db.save('flights', 'KLM-5034', flight, { returnbody: true, dw: 'quorum', method: 'POST' })

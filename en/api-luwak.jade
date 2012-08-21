@@ -1,0 +1,18 @@
+section
+  h4#api-luwak Luwak
+
+  p.
+    These commands (<code>getLarge</code>, <code>saveLarge</code>, <code>removeLarge</code>) 
+    behave much like their counterparts <code>get</code>, <code>save</code>, <code>remove</code>. 
+    Except they don't take a <code>bucket</code> argument, internally reference the <code>luwak</code> 
+    raw resource, and always use <code>responseEncoding = 'binary'</code> therefore returning 
+    <code>Buffer</code>s.
+  
+  +js.
+    db.getLarge('lowcost-pilot')
+  
+  +js.
+    db.saveLarge('lowcost-pilot', buffer)
+  
+  +js.
+    db.removeLarge('lowcost-pilot')

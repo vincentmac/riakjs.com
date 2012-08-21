@@ -1,0 +1,8 @@
+section
+  h4#api-line-walking Link-walking
+
+  +js.
+    db.walk('airlines', 'KLM', [["_", "flight"]])
+
+  p.
+    Provide <code>{ noJSON: true }</code> if you are not targeting JSON data!

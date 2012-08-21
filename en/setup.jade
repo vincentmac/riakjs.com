@@ -1,0 +1,18 @@
+section
+  h2#setup Setup
+  
+  p.
+    <strong> Please note:</strong> Protobuf support is still experimental.
+  
+  +js.
+    // npm install riak-js@latest
+    var db = require('riak-js').getClient()
+
+    // git clone git://github.com/mostlyserious/riak-js.git  # or cloning the repo
+    var db = require('/path/to/riak-js/lib').getClient()
+
+    // configure the host and port
+    var db = require('riak-js').getClient({host: "riak.myhost", port: "8098" });
+
+  p.
+    Or specify the API: <code>getClient({api: 'protobuf'})</code>.

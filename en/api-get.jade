@@ -1,0 +1,62 @@
+section
+  h4#api-get Get
+  
+  +js.
+    db.get('airlines', 'KLM')
+  
+  p.
+    A typical response would be:
+  
+  +js.
+    { name: 'KLM'
+    , fleet: 111
+    , alliance: 'SkyTeam'
+    , european: true
+    }
+  
+  p.
+    If, however, there is a <em>sibling conflict</em> (when <code>allow_mult = true</code>) 
+    then a typical response would have a <code>meta.statusCode = 300</code> and would look like:
+  
+  +js.
+    [ { meta:
+         { bucket: 'airlines'
+         , key: 'KLM'
+         , usermeta: {}
+         , _type: 'application/json'
+         , binary: false
+         , links: []
+         , raw: 'riak'
+         , clientId: 'riak-js'
+         , host: 'localhost'
+         , lastMod: 'Sun, 26 Sep 2010 16:28:17 GMT'
+         , etag: '5QDmB8ezT8hpMNX9Ias8DU'
+         , vclock: 'a85hYGBgymDKBVIsTO+1QzKYEhnzWBkWfhA+xgcRZmtOYlvXp4MskQUA'
+         }
+      , data: { name: 'KLM'
+         , fleet: 111
+         , alliance: 'SkyTeam'
+         , european: true
+         }
+      }
+    , { meta:
+         { bucket: 'airlines'
+         , key: 'KLM'
+         , usermeta: {}
+         , _type: 'application/json'
+         , binary: false
+         , links: []
+         , raw: 'riak'
+         , clientId: 'riak-js'
+         , host: 'localhost'
+         , lastMod: 'Sun, 26 Sep 2010 16:28:17 GMT'
+         , etag: '4wz9tAlKC49RVqQmhcAvHz'
+         , vclock: 'a85hYGBgymDKBVIsTO+1QzKYEhnzWBkWfhA+xgcRZmtOYlvXp4MskQUA'
+         }
+      , data: { name: 'KLM'
+         , fleet: 113
+         , alliance: 'SkyTeam'
+         , european: true
+         }
+      } 
+    ]

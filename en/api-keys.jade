@@ -1,0 +1,14 @@
+section
+  h4#api-keys Keys
+
+  +js.
+    db.keys('airlines')
+
+  h5#api-streaming-keys Streaming keys
+
+  +js.
+    db.keys('airlines', { keys: 'stream' }).on('keys', console.dir).start()
+  
+  p.
+    Yes, in this case <code>db.keys</code> will return an <code>EventEmitter</code>. 
+    It will emit both the <code>keys</code> and <code>end</code> events.

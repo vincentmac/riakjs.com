@@ -1,0 +1,12 @@
+section
+  h3#callbacks Callbacks
+  +js.
+    db.save('flights', 'KLM-5034', flight)
+  p.
+    riak-js follows the Node convention: last argument is the callback, whose first argument 
+    is the error object. Besides, the client will also emit the <code>clientError</code> event.
+  
+  p.
+    If you don't provide a callback the result will <strong>always</strong> be logged 
+    through <code>console.log</code>. You can choose to enable debugging via the 
+    <code>{ debug: true }</code> option.
