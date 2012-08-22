@@ -23,4 +23,4 @@ $ make
 
 ## Contributing
 
-  - __dont__ edit the HTML directly, edit the _jade_.
+  - __don't__ edit the HTML directly, edit the _jade_.
