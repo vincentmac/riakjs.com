@@ -1,9 +1,0 @@
-section
-  h4#guide-http-headers HTTP headers
-  p.
-    You can pass in a <code>headers</code> options that will override any previously set header. 
-    Useful to set other headers if you have a reverse proxy sitting between node and Riak. 
-    <em>Use with caution</em>.
-  
-  +js.
-    db.get('flights', 'KLM-5034', { headers: { Authorization: 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==' } })
