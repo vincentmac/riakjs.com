@@ -15,10 +15,11 @@ layout: page
 * License: [MIT](http://opensource.org/licenses/mit-license.php)
 
 ## Setup
-      
+
+    npm install riak-js@latest
+
 **Please note:** Protocol Buffers currently aren't supported
       
-    // npm install riak-js@latest
     var db = require('riak-js').getClient()
 
     // git clone git://github.com/mostlyserious/riak-js.git  # or cloning the repo
