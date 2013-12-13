@@ -10,13 +10,11 @@ layout: page
        { bucket: 'flights', key: 'KLM-1196', tag: 'passenger' }]
     })
 
-* For Riak 0.12+ and node.js 0.4.x
+* For Riak 1.0+ and node.js 0.8.x
 * Code: <http://github.com/mostlyserious/riak-js>
 * License: [MIT](http://opensource.org/licenses/mit-license.php)
 
 ## Setup
-      
-**Please note:** Protocol Buffers currently aren't supported
       
     // npm install riak-js@latest
     var db = require('riak-js').getClient()
@@ -26,6 +24,33 @@ layout: page
 
     // configure the host and port
     var db = require('riak-js').getClient({host: "riak.myhost", port: "8098"});
+
+### Protocol Buffers
+
+To use Protocol Buffers, specify an API when running `getClient()`
+
+    var db = require('riak-js').getClient({api: 'protobuf'})
+
+Currently, only one connection per client is supported for Protocol Buffers,
+connection pooling is on the roadmap.
+
+### Load Balancing/Connection Pooling
+
+riak-js' HTTP transport supports load balancing and connection pooling by way of
+the [poolee](https://github.com/dannycoates/poolee) library. You can specify a
+list of servers to connect to:
+
+    var db = require('riak-js').
+      getClient({pool: {servers: ['127.0.0.1:8098', '127.0.0.1:8198']}})
+
+poolee supports keep-alive connections by way of an alternative request agent
+too, which you can specify in the options for the pool:
+
+    var db = require('riak-js').
+      getClient({pool: {options: {keepAlive: true}}})
+    
+See the [poolee documentation](https://github.com/dannycoates/poolee#new) for
+all available options.
 
 ## Guide
 
@@ -184,6 +209,19 @@ If, however, there is a *sibling conflict* (when `allow_mult = true`) then a typ
         , european: true
       }
     } ]
+
+##### Siblings
+
+riak-js fetches all siblings by default. Should the meta object have a
+status of 300, the data object will be an array of all siblings.
+
+    db.get('airlines', 'KLM', function(err, data, meta) {
+      if (meta.statusCode == 300) {
+        for (var obj in data) {
+          // reconcile siblings
+        }
+      }
+    });
 
 #### Head
 
